@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { useUser } from 'reactfire'
-import Auth from './Auth'
+import Auth from './Login/Auth'
 
 function App() {
   const user = useUser();
