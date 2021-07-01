@@ -7,7 +7,7 @@ function App() {
   const user = useUser();
   return (
     <div className="App">
-      {user.data &&<p>Usuario: {user.data.bc.email}</p>}
+      {user.data &&<p>¡Bienvenid@ {user.data.bc.email}!</p>}
       <Auth />
     </div>
   );

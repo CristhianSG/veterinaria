@@ -9,9 +9,6 @@ import firebase from 'firebase/app'
 export default (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-
-
     const firebase = useFirebaseApp();
     const user = useUser();
 
@@ -76,31 +73,36 @@ export default (props) => {
 
     return (
         <div>
-
+            {
+                user.data &&
+                <div>
+                    
+                    <button onClick={logout}>Cerrar Sesión</button>
+                    <Veterinaria />
+                </div >
+            }
             {
                 !user.data &&
                 <div>
                     <div>
-                        <label htmlFor="email">Correo Electrónico</label>
+                        <label htmlFor="email">Correo: </label>
                         <input type="email" id="email" onChange={(ev) => setEmail(ev.target.value)} />
                     </div>
                     <div>
-                        <label htmlFor="password">Contraseña</label>
+                        <label htmlFor="password">Contraseña: </label>
                         <input type="password" id="password" onChange={(ev) => setPassword(ev.target.value)} />
                     </div>
                     <div className="botones">
-                        <button onClick={login}>Iniciar Sesion</button>
-                        <button onClick={loginWithGoogle}>Inicia sesión con Google</button>
-                        <button onClick={submit}>Crear Cuenta</button>
+                        <div>
+                            <button onClick={login}>Iniciar Sesion</button>
+                            <button onClick={submit}>Crear Cuenta</button>
+                        </div>
+                        <div>
+                            <button onClick={loginWithGoogle}>Inicia sesión con Google</button>
+                        </div>
                     </div>
                 </div>}
-            {
-                user.data &&
-                <div>
-                    <Veterinaria />
-                    <button onClick={logout}>Cerrar Sesión</button>
-                </div >
-            }
+
         </div>
     )
 }
